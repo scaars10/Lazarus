@@ -38,7 +38,6 @@ def download_video(topic):
         	         'format': 'bestvideo/best',
             	               'quiet': True,
                	            'restrictfilenames': True,
-               	            'outtmpl': home+'Downloads/%(title)s.%(ext)s'
             	}
 
 		ydl = youtube_dl.YoutubeDL()
@@ -69,4 +68,4 @@ def download_song(topic):
 	#os.chdir('../src')
 	#except:
 	#	print("OOPS Song Could Not Be Downloaded")
-download_video("Killing in the name")
+#stream_video("Killing in the name")
