@@ -15,4 +15,4 @@ def say(text):
 		os.system("mpg321 geek_aud.mp3")
 		os.remove("geek_aud.mp3")
 	except:
-		print("Error occured. Make sure you are connected to internet")
+		print("Error occured while converting text to speech. ")

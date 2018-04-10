@@ -2,19 +2,19 @@ import webbrowser
 import requests
 import sys
 #from bs4 import BeautifulSoup
-def eng():
-	filePath = sys.argv[1]
-	arg_len = len(sys.argv)
+def eng(filePath):
+	#filePath = sys.argv[1]
+	"""arg_len = len(sys.argv)
 	#print(str(arg_len))
 	if(arg_len!=2):
 		print("Enter 1 image at a time")
-		exit()
+		exit()"""
 	searchUrl = 'http://www.google.hr/searchbyimage/upload'
 	multipart = {'encoded_image': (filePath, open(filePath, 'rb')), 'image_content': ''}
 	response = requests.post(searchUrl, files=multipart, allow_redirects=False)
 	fetchUrl = response.headers['Location']
-	r = requests.get(fetchUrl)
-
+	
+	webbrowser.open(fetchUrl)
 """if(r.status_code == 200):
 	cont = r.content
 	parser = {'html.parser', 'lxml'}
@@ -25,5 +25,5 @@ def eng():
 		for link in tag:
 			print(str(link))"""
 
-
+#eng("/home/scaars13/Pictures/Wallpapers/exp_sky.jpg")
 

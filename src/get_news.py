@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import web_browser
 #from newspaper import Article
 import sys
-
+import location
 
 
 def get_news(topic):
@@ -41,3 +41,7 @@ def get_news(topic):
 		itr+=1"""
 		itr+=1
 		web_browser.open_link(news_url)
+
+def get_local_news():
+	get_news(location.get_city())
+#get_local_news()
