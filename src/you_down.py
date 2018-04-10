@@ -6,6 +6,7 @@ import webbrowser
 import text_speech
 import youtube_dl
 import os
+import small_methods
 home = '/Home/scaars13'
 def get_top_result(topic):
 	try:
@@ -32,6 +33,7 @@ def stream_video(topic):
 		text_speech.say("Sorry Video Could Not Be streamed")
 def download_video(topic):
 	try:
+		small_methods.directory_manage('../Downloads')
 		os.chdir('../Downloads')
 		top_res = get_top_result(topic)
 		ydl_opts = {
@@ -68,4 +70,4 @@ def download_song(topic):
 	#os.chdir('../src')
 	#except:
 	#	print("OOPS Song Could Not Be Downloaded")
-#stream_video("Killing in the name")
+download_video("Take Me Somewhere Nice By Mogwai")
