@@ -6,7 +6,7 @@ import webbrowser
 import text_speech
 import youtube_dl
 import os
-
+home = '/Home/scaars13'
 def get_top_result(topic):
 	try:
 		text_speech.say("Finding"+topic)
@@ -38,6 +38,7 @@ def download_video(topic):
         	         'format': 'bestvideo/best',
             	               'quiet': True,
                	            'restrictfilenames': True,
+               	            'outtmpl': home+'Downloads/%(title)s.%(ext)s'
             	}
 
 		ydl = youtube_dl.YoutubeDL()
@@ -61,11 +62,11 @@ def download_song(topic):
                            }],
                            'quiet': True,
                            'restrictfilenames': True,
-                           'outtmpl': '../Downloads/%(title)s.%(ext)s'
+                           'outtmpl': home+'Downloads/%(title)s.%(ext)s'
 				}
 	ydl = youtube_dl.YoutubeDL()
 	ydl.download(['https://www.youtube.com'+top_res])
 	#os.chdir('../src')
 	#except:
 	#	print("OOPS Song Could Not Be Downloaded")
-#stream_video("Killing in the name")
+download_video("Killing in the name")
