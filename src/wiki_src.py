@@ -16,4 +16,4 @@ def open_wiki(topic):
 	web_browser.open_link(link)
 	return 0
 
-#open_wiki('Khajudfsa')
+#open_wiki('Messi')

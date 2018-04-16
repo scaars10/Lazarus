@@ -15,5 +15,13 @@ def get_area():
 	return location
 
 def get_city():
-	city = get_area().split(',')[-4]
-	return city
+	count=0
+	while(count<4):
+		try:
+			city = get_area().split(',')[-4]
+			return city
+		except:
+			count+=1
+	print("geocode timed out on various attempts. Check your connectivity or try again.")
+	return "-1"
+#print(get_area())

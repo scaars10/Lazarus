@@ -10,6 +10,7 @@ import web_browser
 #from newspaper import Article
 import sys
 import location
+import text_speech
 
 
 def get_news(topic):
@@ -29,6 +30,7 @@ def get_news(topic):
 	"""for element in news_elements:
 		print(str(element))"""
 	itr=0
+	text_speech.say("Opening news about "+topic+" in your browser")
 	while((itr<3) and (itr<num_links)):
 		news_url = news_elements[itr]["href"]
 		"""print(news_url)
@@ -43,5 +45,9 @@ def get_news(topic):
 		web_browser.open_link(news_url)
 
 def get_local_news():
-	get_news(location.get_city())
+	loc = location.get_city()
+	if(loc=="-1"):
+		return -1
+	get_news(loc)
 #get_local_news()
+#get_news("ronaldo")

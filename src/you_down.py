@@ -12,7 +12,7 @@ def get_top_result(topic):
 	try:
 		text_speech.say("Finding"+topic)
 		topic_url = topic.replace(' ','+')
-		url= url = 'https://www.youtube.com/results?search_query='+topic_url
+		url = 'https://www.youtube.com/results?search_query='+topic_url
 		r = requests.get(url)
 		soup = BeautifulSoup(r.content, "html.parser")
 		all_videos = soup.findAll('div', {'class': 'yt-lockup-video'})
@@ -27,27 +27,27 @@ def stream_video(topic):
 		top_res = get_top_result(topic)
 		if(str(top_res) == "-1"):
 			return -1
-		#text_speech.say("Streaming Video In Your Browser")
+		text_speech.say("Streaming Video In Your Browser")
 		webbrowser.open('https://www.youtube.com'+top_res)
 	except:
 		text_speech.say("Sorry Video Could Not Be streamed")
 def download_video(topic):
-	try:
-		small_methods.directory_manage('../Downloads')
-		os.chdir('../Downloads')
-		top_res = get_top_result(topic)
-		ydl_opts = {
+	#try:
+	small_methods.directory_manage('../Downloads')
+	os.chdir('Downloads')
+	top_res = get_top_result(topic)
+	ydl_opts = {
         	         'format': 'bestvideo/best',
             	               'quiet': True,
                	            'restrictfilenames': True,
             	}
 
-		ydl = youtube_dl.YoutubeDL()
-		ydl.download(['https://www.youtube.com'+top_res])
+	ydl = youtube_dl.YoutubeDL()
+	ydl.download(['https://www.youtube.com'+top_res])
 		#except:
-		os.chdir('../src')
-	except:
-		text_speech.say("Video Could not be Downloaded")
+	os.chdir('../')
+	#except:
+	#	text_speech.say("Video Could not be Downloaded")
 	#os.system()
 
 def download_song(topic):
@@ -55,19 +55,22 @@ def download_song(topic):
 	top_res = get_top_result(topic)		
 	#os.chdir('../Downloads')
 	ydl_opts = {
-              'format': 'bestaudio/best',
-              'postprocessors': [{
-                        'key': 'FFmpegExtractAudio',
+                 'format': 'bestaudio/best',
+                 'postprocessors': [{
+                           'key': 'FFmpegExtractAudio',
                            'preferredcodec': 'mp3',
                            'preferredquality': '192',
                            }],
                            'quiet': True,
                            'restrictfilenames': True,
-                           'outtmpl': home+'Downloads/%(title)s.%(ext)s'
+                           'outtmpl': home+'/Desktop/%(title)s.%(ext)s'
 				}
 	ydl = youtube_dl.YoutubeDL()
+	text_speech.say("Downloading "+topic+" Please Wait.")
 	ydl.download(['https://www.youtube.com'+top_res])
+	text_speech.say(topic+" downloaded. Check the downloads directory.")
 	#os.chdir('../src')
 	#except:
 	#	print("OOPS Song Could Not Be Downloaded")
-download_video("Take Me Somewhere Nice By Mogwai")
+#stream_video("Fwu kehlani")
+#download_video("Really something by hector gahan")

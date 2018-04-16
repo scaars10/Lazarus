@@ -57,11 +57,10 @@ import text_speech
 #     # Press ctrl-c or ctrl-d on the keyboard to exit
 #     except (KeyboardInterrupt, EOFError, SystemExit):
 #         break
-chatbot = ChatBot('Corolla', trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
+chatbot = ChatBot('Alexa', trainer='chatterbot.trainers.UbuntuCorpusTrainer')
 def train():
-	chatbot.train("chatterbot.corpus.english")
-# chatbot = ChatBot('Alexa', trainer='chatterbot.trainers.UbuntuCorpusTrainer')
-# chatbot.train()
+	#chatbot.train("chatterbot.corpus.english")
+	chatbot.train()
 def chat():
 	while True:
 	    user_input = raw_input('You : ')
@@ -76,5 +75,5 @@ def chat():
 	        break
 	    
 
-#train()
-#chat()
+train()
+chat()
