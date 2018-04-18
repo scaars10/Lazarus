@@ -10,7 +10,12 @@ import dev_handle
 import get_weather
 import you_down
 import time
+import play_music
+import translator
+#import translator
 import get_map
+import os
+#import gmail_virtAss
 
 
 sys.path.insert(0,'chat_dir')
@@ -31,6 +36,7 @@ while(text_input!="exit"):
 			text_speech.say("Restarting device.")
 			time.sleep(5)
 			dev_handle.restart()
+			break
 		except:
 			text_speech.say("Sorry. An error was encountered")
 	elif(text_input=="shut down device"):
@@ -117,11 +123,41 @@ while(text_input!="exit"):
 			dumb_chatbot.chat()
 		except:
 			text_speech.say("Sorry an error was encountered.")
+	elif(text_input == "gmail"):
+		#try:
+		text_speech.say("Opening gmail for you")
+		os.system("python3 gmail_virtAss.py")
+		#except:
+		#text_speech.say("Sorry. An error was encountered")
+	elif(text_input == "stream music"):
+		try:
+			text_speech.say("Using Soundcloud")
+			play_music.play()
+		except:
+			text_speech.say("Sorry. An error was encountered.")
+
+	elif(text_input == "manage classroom"):
+		
+		text_speech.say("Opening the handler of google classroom")
+		os.chdir('c')
+		os.system("python3 classroom_VirtAss.py")
+		os.chdir('../')
+	elif(text_input == "translate"):
+		try:
+			text_speech.say("Opening translator")
+			translator.translate()
+		except:
+			text_speech.say("Sorry. An error was encountered")
+	elif(text_input == "calendar"):
+		text_speech.say("Opening calendar handler")
+		os.chdir('src')
+		os.system('python google-cal.py')
+		os.chdir('../')
 	else:
 		try:
 			text_speech.say("Please enter a valid command.")
 		except:
-			text_speech.say("Sorry an error was encountered.")	
+			text_speech.say("Sorry an error was encountered.")
 	text_speech.say("Anything else I can help you with?")
 	text_input = raw_input()
 	text_input = text_input.lower()

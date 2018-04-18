@@ -11,7 +11,7 @@ from oauth2client import file, client, tools
 import argparse
 
 # Setup the Gmail API
-SCOPES = 'https://www.googleapis.com/auth/gmail.send'
+SCOPES = 'https://mail.google.com/'
 store = file.Storage('credentials.json')
 
 def get_credentials():
@@ -66,14 +66,11 @@ def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
 
 def main():
     print_labels()
-    msgHtml = "Hi<br/>Html Email"
-    #msgPlain = "Hi\nPlain Email"
-    receiver = input("To:")
-    subject = input("Enter the subject")
-    msgPlain = input("Enter the body")
-    message = CreateMessageHtml('me',receiver,subject,msgHtml,msgPlain)
-    service = get_service()
-    send_messages(service,'me', message)
+    # msgHtml = "Hi<br/>Html Email"
+    # msgPlain = "Hi\nPlain Email"
+    # message = CreateMessageHtml('me','arshdeep.mailme@gmail.com','test',msgHtml,msgPlain)
+    # service = get_service()
+    # send_messages(service,'me', message)
 
 
 if __name__ == '__main__':
