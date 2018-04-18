@@ -8,7 +8,7 @@ def listen():
     with sr.Microphone() as source:
         r.adjust_for_ambient_noise(source)
         text_speech.say("Say something!")
-        audio = r.listen(source, timeout=4)
+        audio = r.listen(source, timeout=8)
     input_textr=""
     # recognize speech using Sphinx
     try:

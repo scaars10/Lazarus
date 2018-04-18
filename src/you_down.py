@@ -10,7 +10,7 @@ import small_methods
 home = '/Home/scaars13'
 def get_top_result(topic):
 	try:
-		text_speech.say("Finding"+topic)
+		text_speech.say("Finding "+topic)
 		topic_url = topic.replace(' ','+')
 		url = 'https://www.youtube.com/results?search_query='+topic_url
 		r = requests.get(url)
@@ -32,22 +32,23 @@ def stream_video(topic):
 	except:
 		text_speech.say("Sorry Video Could Not Be streamed")
 def download_video(topic):
-	#try:
-	small_methods.directory_manage('../Downloads')
-	os.chdir('Downloads')
-	top_res = get_top_result(topic)
-	ydl_opts = {
+	try:
+		small_methods.directory_manage('Downloads')
+		os.chdir('Downloads')
+		top_res = get_top_result(topic)
+		ydl_opts = {
         	         'format': 'bestvideo/best',
             	               'quiet': True,
                	            'restrictfilenames': True,
             	}
 
-	ydl = youtube_dl.YoutubeDL()
-	ydl.download(['https://www.youtube.com'+top_res])
+		ydl = youtube_dl.YoutubeDL()
+		ydl.download(['https://www.youtube.com'+top_res])
 		#except:
-	os.chdir('../')
-	#except:
-	#	text_speech.say("Video Could not be Downloaded")
+		os.chdir('../')
+		text_speech.say("Video Downloaded. Check Your Downloads directory.")
+	except:
+		text_speech.say("Video Could not be Downloaded")
 	#os.system()
 
 def download_song(topic):

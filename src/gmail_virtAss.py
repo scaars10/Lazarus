@@ -66,7 +66,6 @@ def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
 
 def main():
     # print_labels()
-
     msgHtml = "Hi<br/>Html Email"
     msgPlain = "Hi\nPlain Email"
     message = CreateMessageHtml('me','arshdeep.mailme@gmail.com','test',msgHtml,msgPlain)
