@@ -7,7 +7,7 @@ from gtts import gTTS
 import os
 import sys
 def say(text):
-
+	count=0
 	language = "en"
 	try:
 		

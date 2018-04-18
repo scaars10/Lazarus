@@ -70,10 +70,10 @@ def chat():
 	        break
 	    try:
 	        response = chatbot.get_response(user_input)
-	        print(response)
+	        #print(response)
 	        text_speech.say(str(response))
 	    except(KeyboardInterrupt, EOFError, SystemExit):
-	        break
+	        text_speech.say("Sorry An Error has occured.")
 	    
 
 #train()
