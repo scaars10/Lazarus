@@ -120,7 +120,7 @@ while(text_input!="exit"):
 	elif(text_input == "chat"):
 		try:
 			text_speech.say("Opening Chatbot")
-			dumb_chatbot.chat()
+			dumb_chatbot.main()
 		except:
 			text_speech.say("Sorry an error was encountered.")
 	elif(text_input == "gmail"):
